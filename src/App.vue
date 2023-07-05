@@ -1,26 +1,48 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <v-card>
+    <v-layout>
+      <VueHeader />
+      <v-navigation-drawer expand-on-hover rail>
+        <v-list>
+          <v-list-item
+            prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
+            title="Sandra Adams"
+            subtitle="sandra_a88@gmailcom"
+          ></v-list-item>
+        </v-list>
+
+        <v-divider></v-divider>
+
+        <v-list density="compact" nav>
+          <v-list-item
+            prepend-icon="mdi-folder"
+            title="My Files"
+            value="myfiles"
+          ></v-list-item>
+          <v-list-item
+            prepend-icon="mdi-account-multiple"
+            title="Shared with me"
+            value="shared"
+          ></v-list-item>
+          <v-list-item
+            prepend-icon="mdi-star"
+            title="Starred"
+            value="starred"
+          ></v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+
+      <v-main>
+        <router-view />
+      </v-main>
+    </v-layout>
+  </v-card>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import VueHeader from "@/components/VueHeader.vue";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  components: { VueHeader },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
