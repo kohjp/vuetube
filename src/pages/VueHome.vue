@@ -1,15 +1,20 @@
 <template>
-  <div v-for="(item, idx) in state.items" :key="idx">
-    <img :src="item.snippet.thumbnails.medium.url" />
-    {{ item.snippet.title }}
+  <div class="container">
+    <div v-for="(item, idx) in state.items" :key="idx">
+      <VueItem :item="item" />
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import { reactive } from "vue";
+import VueItem from "@/components/VueItem.vue";
 
 export default {
+  components: {
+    VueItem,
+  },
   setup() {
     const state = reactive({
       items: [],
@@ -31,4 +36,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
