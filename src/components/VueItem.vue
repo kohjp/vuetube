@@ -1,9 +1,11 @@
 <template>
   <div class="item">
     <img class="item-thumbnail" :src="item.snippet.thumbnails.medium.url" />
-    <div>
+    <div class="info">
       <img class="channel-thumbnail" :src="state.channel" />
-      {{ item.snippet.title }}
+      <div class="title">
+        {{ item.snippet.title }}
+      </div>
     </div>
   </div>
 </template>
@@ -41,16 +43,35 @@ export default {
 .item {
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin: 20px;
   width: 350px;
 }
+
+.item .info {
+  display: flex;
+  margin-top: 12px;
+}
+
+.info .title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 900;
+}
+
 .item .item-thumbnail {
-  border-radius: 20px;
+  border-radius: 15px;
   width: 340px;
   height: 190px;
 }
 
 .item .channel-thumbnail {
   border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  margin-right: 12px;
 }
 </style>

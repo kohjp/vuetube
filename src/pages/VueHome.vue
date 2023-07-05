@@ -22,7 +22,7 @@ export default {
     try {
       axios
         .get(
-          `https://www.googleapis.com/youtube/v3/videos?key=${process.env.VUE_APP_API_KEY}&part=snippet&chart=mostPopular&regionCode=kr`
+          `https://www.googleapis.com/youtube/v3/videos?key=${process.env.VUE_APP_API_KEY}&part=snippet&chart=mostPopular&regionCode=kr&maxResults=25`
         )
         .then((res) => {
           state.items = res.data.items;
