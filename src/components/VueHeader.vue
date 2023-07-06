@@ -4,8 +4,8 @@
       class="d-flex align-center px-4 text-h5"
       color="red"
       :elevation="5"
-      >VueTube</v-app-bar
-    >
+      ><div><router-link to="/"> VueTube </router-link></div>
+    </v-app-bar>
   </div>
 </template>
 
@@ -20,5 +20,10 @@ export default {
 <style scoped>
 .container {
   padding: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 </style>

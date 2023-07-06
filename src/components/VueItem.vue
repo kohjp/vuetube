@@ -1,10 +1,17 @@
 <template>
   <div class="item">
-    <img class="item-thumbnail" :src="item.snippet.thumbnails.medium.url" />
+    <router-link :to="{ path: '/watch/' + item.id }">
+      <img class="item-thumbnail" :src="item.snippet.thumbnails.medium.url" />
+    </router-link>
     <div class="info">
       <img class="channel-thumbnail" :src="state.channel" />
-      <div class="title">
-        {{ item.snippet.title }}
+      <div class="content-info">
+        <div class="title">
+          {{ item.snippet.title }}
+        </div>
+        <div class="channel-title">
+          {{ item.snippet.channelTitle }}
+        </div>
       </div>
     </div>
   </div>
@@ -51,6 +58,8 @@ export default {
 .item .info {
   display: flex;
   margin-top: 12px;
+  flex-grow: 1;
+  width: 100%;
 }
 
 .info .title {
@@ -73,5 +82,11 @@ export default {
   width: 36px;
   height: 36px;
   margin-right: 12px;
+}
+
+.content-info .channel-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #606060;
 }
 </style>
