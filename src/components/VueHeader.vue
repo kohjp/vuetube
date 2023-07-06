@@ -4,13 +4,20 @@
       class="d-flex align-center px-4 text-h5"
       color="red"
       :elevation="5"
-      ><div><router-link to="/"> VueTube </router-link></div>
+      ><div>
+        <router-link to="/"> VueTube </router-link>
+      </div>
+      <VueSearchBar />
     </v-app-bar>
   </div>
 </template>
 
 <script>
+import VueSearchBar from "./VueSearchBar.vue";
 export default {
+  components: {
+    VueSearchBar,
+  },
   setup() {
     return {};
   },
