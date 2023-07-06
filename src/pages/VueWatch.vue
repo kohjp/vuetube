@@ -76,7 +76,6 @@ export default {
         )
         .then((res) => {
           channel.value = res.data.items[0];
-          console.log(channel.value);
           isLoading.value = false;
         });
     })();
