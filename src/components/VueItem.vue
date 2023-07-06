@@ -7,7 +7,9 @@
       <img class="channel-thumbnail" :src="state.channel" />
       <div class="content-info">
         <div class="title">
-          {{ item.snippet.title }}
+          <router-link :to="{ path: '/watch/' + item.id }">
+            {{ item.snippet.title }}
+          </router-link>
         </div>
         <div class="channel-title">
           {{ item.snippet.channelTitle }}
@@ -76,6 +78,11 @@ export default {
   overflow: hidden;
   font-size: 16px;
   font-weight: 900;
+}
+
+.info .title a {
+  text-decoration: none;
+  color: black;
 }
 
 .item .item-thumbnail {
