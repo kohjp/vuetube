@@ -12,15 +12,19 @@
         <div class="channel-title">
           {{ item.snippet.channelTitle }}
         </div>
+        <div class="channel-title">
+          {{ date }}
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import { reactive } from "vue";
 import axios from "axios";
 import { reactive } from "vue";
+import dayjs from "dayjs";
+
 export default {
   props: {
     item: Object,
@@ -29,6 +33,9 @@ export default {
     const state = reactive({
       channel: "",
     });
+    const date = dayjs(props.item.publishedAt).format(
+      "YYYY년 MM월 DD일 HH시 mm분"
+    );
     try {
       axios
         .get(
@@ -41,7 +48,7 @@ export default {
     } catch (err) {
       console.log(err);
     }
-    return { state };
+    return { state, date };
   },
 };
 </script>

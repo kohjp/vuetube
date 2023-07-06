@@ -4,8 +4,8 @@
       <iframe
         id="ytplayer"
         type="text/html"
-        width="80%"
-        height="50%"
+        width="100%"
+        height="100%"
         :src="url"
         frameborder="0"
         allowfullscreen
@@ -29,10 +29,9 @@ export default {
 
 <style scoped>
 .container {
-  height: ;
+  display: flex;
 }
 
 .video {
-  height: auto;
 }
 </style>
