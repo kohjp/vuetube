@@ -14,18 +14,24 @@
       </div>
     </div>
     <div class="item-video" v-else>
-      <img
-        class="video-thumbnail"
-        :src="item.snippet.thumbnails.medium.url"
-        alt="thumbnail"
-      />
+      <router-link :to="{ path: '/watch/' + item.id.videoId }">
+        <img
+          class="video-thumbnail"
+          :src="item.snippet.thumbnails.medium.url"
+          alt="thumbnail"
+        />
+      </router-link>
       <div>
-        <div class="title">{{ item.snippet.title }}</div>
-        <div>{{ date }}</div>
-        <div class="channel-title">{{ item.snippet.channelTitle }}</div>
-        <div>
-          {{ item.snippet.description }}
-        </div>
+        <router-link :to="{ path: '/watch/' + item.id.videoId }">
+          <div class="title">
+            {{ item.snippet.title }}
+          </div>
+          <div>{{ date }}</div>
+          <div class="channel-title">{{ item.snippet.channelTitle }}</div>
+          <div>
+            {{ item.snippet.description }}
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -62,6 +68,11 @@ export default {
 .item-video {
   display: flex;
   gap: 20px;
+}
+
+.item-video a {
+  text-decoration: none;
+  color: black;
 }
 
 .item-video .video-thumbnail {
