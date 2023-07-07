@@ -40,7 +40,7 @@ export default {
     const data = ref("");
 
     const search = () => {
-      router.push({ path: "/search", query: { q: data.value } });
+      router.replace({ path: "/search", query: { q: data.value } });
     };
 
     return { data, onClick, search };

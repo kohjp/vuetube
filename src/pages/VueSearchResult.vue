@@ -1,32 +1,46 @@
 <template>
   <div class="container">
     <div v-for="(item, idx) in result" :key="idx">
-      {{ item.snippet.title }}
+      <VueSearchItemVue :item="item" />
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
+import VueSearchItemVue from "@/components/VueSearchItem.vue";
 export default {
+  components: {
+    VueSearchItemVue,
+  },
+
   setup() {
     const result = ref([]);
-    const route = useRoute();
 
-    axios
-      .get(
-        `https://www.googleapis.com/youtube/v3/search?key=${process.env.VUE_APP_API_KEY}&part=snippet&q=${route.query.q}&regionCode=kr&maxResults=30`
-      )
-      .then((res) => {
-        console.log(res.data.items);
-        result.value = res.data.items;
-      });
+    const route = useRoute();
+    watchEffect(() => {
+      axios
+        .get(
+          `https://www.googleapis.com/youtube/v3/search?key=${process.env.VUE_APP_API_KEY}&part=snippet&q=${route.query.q}&regionCode=kr&maxResults=30`
+        )
+        .then((res) => {
+          result.value = res.data.items;
+        });
+    });
 
     return { result };
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+  padding-right: 90px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+</style>
