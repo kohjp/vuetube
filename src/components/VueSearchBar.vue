@@ -10,7 +10,7 @@
           append-inner-icon="mdi-magnify"
           single-line
           hide-details
-          @click:append-inner="onClick"
+          @click:append-inner="search"
           v-model="data"
           @keyup.enter="search"
         ></v-text-field>
