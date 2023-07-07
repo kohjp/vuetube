@@ -5,9 +5,9 @@
       <v-navigation-drawer expand-on-hover rail>
         <v-list>
           <v-list-item
-            prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
-            title="Sandra Adams"
-            subtitle="sandra_a88@gmailcom"
+            prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
+            title="Username"
+            subtitle="example@gmailcom"
           ></v-list-item>
         </v-list>
 
@@ -16,17 +16,17 @@
         <v-list density="compact" nav>
           <v-list-item
             prepend-icon="mdi-folder"
-            title="My Files"
+            title="저장한 영상"
             value="myfiles"
           ></v-list-item>
-          <v-list-item
+          <!-- <v-list-item
             prepend-icon="mdi-account-multiple"
             title="Shared with me"
             value="shared"
-          ></v-list-item>
+          ></v-list-item> -->
           <v-list-item
             prepend-icon="mdi-star"
-            title="Starred"
+            title="즐겨찾기"
             value="starred"
           ></v-list-item>
         </v-list>
