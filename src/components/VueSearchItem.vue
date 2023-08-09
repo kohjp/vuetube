@@ -37,20 +37,15 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import dayjs from "dayjs";
+import { defineProps } from "vue";
 
-export default {
-  props: {
-    item: Object,
-  },
-  setup(props) {
-    const date = dayjs(props.item.snippet.publishedAt).format(
-      "YYYY년 MM월 DD일 HH시 mm분"
-    );
-    return { date };
-  },
-};
+const props = defineProps(["item"]);
+
+const date = dayjs(props.item.snippet.publishedAt).format(
+  "YYYY년 MM월 DD일 HH시 mm분"
+);
 </script>
 
 <style scoped>
