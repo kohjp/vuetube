@@ -44,16 +44,11 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import axios from "axios";
-import { reactive, ref } from "vue";
+import {  ref } from "vue";
 import { useRoute } from "vue-router";
-export default {
-  setup() {
-    const data = reactive({
-      item: {},
-      channel: {},
-    });
+
     const url = ref("");
     const item = ref({});
     const channel = ref({});
@@ -79,10 +74,6 @@ export default {
           isLoading.value = false;
         });
     })();
-
-    return { url, data, channel, item, isLoading };
-  },
-};
 </script>
 
 <style scoped>

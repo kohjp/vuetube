@@ -6,34 +6,25 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import axios from "axios";
 import { reactive } from "vue";
 import VueItem from "@/components/VueItem.vue";
 
-export default {
-  components: {
-    VueItem,
-  },
-  setup() {
-    const state = reactive({
-      items: [],
+const state = reactive({
+  items: [],
+});
+try {
+  axios
+    .get(
+      `https://www.googleapis.com/youtube/v3/videos?key=${process.env.VUE_APP_API_KEY}&part=snippet&chart=mostPopular&regionCode=kr&maxResults=25`
+    )
+    .then((res) => {
+      state.items = res.data.items;
     });
-    try {
-      axios
-        .get(
-          `https://www.googleapis.com/youtube/v3/videos?key=${process.env.VUE_APP_API_KEY}&part=snippet&chart=mostPopular&regionCode=kr&maxResults=25`
-        )
-        .then((res) => {
-          state.items = res.data.items;
-        });
-    } catch (err) {
-      console.log(err);
-    }
-
-    return { state };
-  },
-};
+} catch (err) {
+  console.log(err);
+}
 </script>
 
 <style scoped>

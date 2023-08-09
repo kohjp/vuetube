@@ -12,16 +12,8 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import VueSearchBar from "./VueSearchBar.vue";
-export default {
-  components: {
-    VueSearchBar,
-  },
-  setup() {
-    return {};
-  },
-};
 </script>
 
 <style scoped>
