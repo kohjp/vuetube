@@ -18,7 +18,7 @@
     </v-card>
   </div>
 </template>
-<script>
+<!-- <script>
 import { ref } from "vue";
 import router from "@/scripts/router";
 export default {
@@ -45,6 +45,16 @@ export default {
 
     return { data, onClick, search };
   },
+};
+</script> -->
+<script setup>
+import { ref } from "vue";
+import router from "@/scripts/router";
+
+const data = ref("");
+
+const search = () => {
+  router.replace({ path: "/search", query: { q: data.value } });
 };
 </script>
 
