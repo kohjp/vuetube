@@ -22,37 +22,37 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import axios from "axios";
 import { reactive } from "vue";
 import dayjs from "dayjs";
+import { defineProps } from "vue";
 
-export default {
-  props: {
-    item: Object,
+// defineProps 인자로 문자열 배열로 가능
+// const props = defineProps(['item']);
+const props = defineProps({
+  item: {
+    Type: Object,
+    default: {},
   },
-  setup(props) {
-    const state = reactive({
-      channel: "",
-    });
-    const date = dayjs(props.item.publishedAt).format(
-      "YYYY년 MM월 DD일 HH시 mm분"
+});
+
+const state = reactive({
+  channel: "",
+});
+const date = dayjs(props.item.publishedAt).format("YYYY년 MM월 DD일 HH시 mm분");
+try {
+  axios
+    .get(
+      `https://www.googleapis.com/youtube/v3/channels?key=${process.env.VUE_APP_API_KEY}&part=snippet&id=${props.item.snippet.channelId}`
+    )
+    .then(
+      (res) =>
+        (state.channel = res.data.items[0].snippet.thumbnails.default.url)
     );
-    try {
-      axios
-        .get(
-          `https://www.googleapis.com/youtube/v3/channels?key=${process.env.VUE_APP_API_KEY}&part=snippet&id=${props.item.snippet.channelId}`
-        )
-        .then(
-          (res) =>
-            (state.channel = res.data.items[0].snippet.thumbnails.default.url)
-        );
-    } catch (err) {
-      console.log(err);
-    }
-    return { state, date };
-  },
-};
+} catch (err) {
+  console.log(err);
+}
 </script>
 
 <style scoped>
